@@ -15,10 +15,29 @@ int binarySearch(List<int> arr, int target) {
   return -1; // Target not found
 }
 
-void main(List<String> args) {
-  List<int> arr = [1, 5, 6, 8, 9, 10, 22];
-  int target = 8;
+void selectionSort(List<int> arr) {
+  int n = arr.length;
+  for (int i = 0; i < n - 1; i++) {
+    int minIndex = i;
+    for (int j = i + 1; j < n; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j;
+      }
+    }
+    if (minIndex != i) {
+      int temp = arr[i];
+      arr[i] = arr[minIndex];
+      arr[minIndex] = temp;
+    }
+  }
+}
 
+void main(List<String> args) {
+  List<int> arr = [11, 50, 6, 811, 9, 10, 22];
+  int target = 50;
+
+  selectionSort(arr); // Sorting the array using selection sort
+  print(arr);
   int index = binarySearch(arr, target);
   if (index == -1) {
     print("$target is not present in array");
